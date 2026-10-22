@@ -1,0 +1,6 @@
+{
+  "name": "Chronos - Dashboard Personale",
+  "description": "Web app responsive con barra laterale, modalità scura e sezioni per Panoramica, Lavoro & Turni, Routine & Sport, Finanze e Promemoria.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
