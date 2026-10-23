@@ -1,12 +1,30 @@
 export type SectionId = 'panoramica' | 'lavoro' | 'routine' | 'finanze' | 'promemoria';
 
 export type ShiftType = 'mattina' | 'pomeriggio' | 'notte' | 'riposo' | 'reperibilita';
+export type ShiftInitial = 'M' | 'P' | 'N' | 'R';
+
+export interface ShiftPatternPreset {
+  id: string;
+  name: string;
+  sequence: ShiftInitial[];
+  description: string;
+}
+
+export interface ShiftSwapRequest {
+  id: string;
+  requesterShiftDate: string;
+  targetColleague: string;
+  proposedDate?: string;
+  reason: string;
+  status: 'pending' | 'approved' | 'rejected';
+  createdAt: string;
+}
 
 export interface Shift {
   id: string;
   date: string; // YYYY-MM-DD
   dayLabel: string; // 'Lun', 'Mar', etc.
-  dayNumber: number; // 21, 22...
+  dayNumber: number; // 1 to 31
   type: ShiftType;
   title: string;
   startTime: string;
@@ -16,6 +34,7 @@ export interface Shift {
   colleagues?: string[];
   notes?: string;
   isClockedIn?: boolean;
+  clockInTime?: string;
 }
 
 export type HabitCategory = 'sport' | 'benessere' | 'produttivita' | 'salute';

@@ -9,26 +9,76 @@
 
 html {
   font-family: var(--font-sans);
-  background-color: #08080d;
-  color: #ffffff;
+  background-color: #0D0F12;
+  color: #F8FAFC;
   color-scheme: dark;
+}
+
+/* ONYX Slate Premium 3D Card Hover & Glassmorphism */
+.card-onyx {
+  background: #161920;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.06);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, box-shadow;
+}
+
+.card-onyx:hover {
+  transform: translateY(-4px) scale(1.008);
+  border-color: rgba(99, 102, 241, 0.35);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65), 
+              0 0 24px rgba(99, 102, 241, 0.12), 
+              inset 0 1px 1px rgba(255, 255, 255, 0.14);
+}
+
+/* Frosted glass popovers & interactive tooltips */
+.glass-popover {
+  background: rgba(22, 25, 32, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65), 0 0 20px rgba(99, 102, 241, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+}
+
+/* 3D Interactive Calendar Cell */
+.calendar-cell-3d {
+  background: #161920;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.04);
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.22s ease;
+  will-change: transform, box-shadow;
+}
+
+.calendar-cell-3d:hover {
+  transform: translateY(-3px) scale(1.018);
+  border-color: rgba(99, 102, 241, 0.45);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6), 
+              0 0 16px rgba(99, 102, 241, 0.14), 
+              inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  z-index: 20;
 }
 
 /* Custom scrollbar styling */
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #08080d;
+  background: #0D0F12;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1f1f2e;
+  background: #1E222D;
   border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #2e2e42;
+  background: #2D3342;
 }

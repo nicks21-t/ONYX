@@ -6,7 +6,7 @@ const sectionTitles: Record<string, string> = {
   panoramica: 'Panoramica Generale',
   lavoro: 'Lavoro & Turni',
   routine: 'Routine & Sport',
-  finanze: 'Finanze & Budget',
+  finanze: 'Finance',
   promemoria: 'Promemoria & Scadenze',
 };
 

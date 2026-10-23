@@ -15,7 +15,7 @@ export const GaugeMeter: React.FC<GaugeMeterProps> = ({
 }) => {
   const clampedValue = Math.min(100, Math.max(0, value));
   const radius = 70;
-  const strokeWidth = 12;
+  const strokeWidth = 8;
   const cx = 90;
   const cy = 90;
 
@@ -33,12 +33,12 @@ export const GaugeMeter: React.FC<GaugeMeterProps> = ({
       >
         <defs>
           <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#ff5e1e" />
-            <stop offset="50%" stopColor="#ff7844" />
-            <stop offset="100%" stopColor="#ff9a62" />
+            <stop offset="0%" stopColor="#4F46E5" />
+            <stop offset="60%" stopColor="#6366F1" />
+            <stop offset="100%" stopColor="#E2E8F0" />
           </linearGradient>
           <filter id="gaugeGlow" x="-20%" y="-20%" width="140%" height="140%">
-            <feDropShadow dx="0" dy="2" stdDeviation="4" floodColor="#ff5e1e" floodOpacity="0.45" />
+            <feDropShadow dx="0" dy="2" stdDeviation="4" floodColor="#6366F1" floodOpacity="0.3" />
           </filter>
         </defs>
 
@@ -64,7 +64,7 @@ export const GaugeMeter: React.FC<GaugeMeterProps> = ({
           className="transition-all duration-1000 ease-out"
         />
 
-        {/* Tick markers along the edge */}
+        {/* Minimal Tick markers along the edge */}
         {[0, 25, 50, 75, 100].map((tick) => {
           const angle = Math.PI - (Math.PI * tick) / 100;
           const tickR1 = radius + 11;
@@ -80,7 +80,7 @@ export const GaugeMeter: React.FC<GaugeMeterProps> = ({
               y1={y1}
               x2={x2}
               y2={y2}
-              stroke="rgba(255, 255, 255, 0.2)"
+              stroke="rgba(255, 255, 255, 0.15)"
               strokeWidth="1.5"
               strokeLinecap="round"
             />
@@ -90,16 +90,16 @@ export const GaugeMeter: React.FC<GaugeMeterProps> = ({
 
       {/* Central Value */}
       <div className="absolute bottom-1 flex flex-col items-center">
-        <span className="text-3xl font-extrabold font-mono tracking-tight text-white tabular-nums drop-shadow-md">
+        <span className="text-3xl font-extrabold font-mono tracking-tight text-[#F8FAFC] tabular-nums drop-shadow-md">
           {clampedValue}%
         </span>
-        <span className="text-[10px] uppercase font-bold tracking-widest text-[#ff7844]">
+        <span className="text-[10px] uppercase font-semibold tracking-wider text-[#94A3B8]">
           {label}
         </span>
       </div>
 
       {sublabel && (
-        <span className="mt-1 text-[11px] text-zinc-400 text-center font-medium">
+        <span className="text-[11px] text-[#94A3B8] mt-2 font-medium">
           {sublabel}
         </span>
       )}

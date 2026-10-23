@@ -16,36 +16,37 @@ import { RemindersSection } from './components/sections/RemindersSection';
 import { QuickActionModal } from './components/modals/QuickActionModal';
 import { AuthPage } from './components/auth/AuthPage';
 import { CheckCircle2, Loader2, Sparkles } from 'lucide-react';
+
 const DashboardLayout: React.FC = () => {
   const { activeSection, toastMessage } = useApp();
 
   return (
-    <div className="relative min-h-screen text-white selection:bg-[#ff5e1e]/30 selection:text-white flex overflow-hidden bg-[#07070a]">
-      {/* 1. Sleek Modern Dark Glassmorphic Ambient Canvas (No photo) */}
+    <div className="relative min-h-screen text-[#F8FAFC] selection:bg-[#6366F1]/30 selection:text-white flex overflow-hidden bg-[#0D0F12]">
+      {/* 1. Sleek Modern Dark Slate Canvas with Subtle Night Indigo & Cool Cyan Ambient Lighting */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        {/* Deep pitch black base */}
-        <div className="absolute inset-0 bg-[#07070a]" />
+        {/* Base Slate Foundation */}
+        <div className="absolute inset-0 bg-[#0D0F12]" />
 
-        {/* Ambient Warm Coral Glow (Upper Center) */}
-        <div className="absolute -top-32 left-1/2 -translate-x-1/2 h-[520px] w-[750px] rounded-full bg-[#ff5e1e]/10 blur-[130px]" />
+        {/* Ambient Subtle Night Indigo / Deep Violet Glow (Upper Center) */}
+        <div className="absolute -top-32 left-1/2 -translate-x-1/2 h-[520px] w-[750px] rounded-full bg-[#6366f1]/10 blur-[140px]" />
 
-        {/* Subtle Emerald / Mint Glow (Bottom Left) */}
-        <div className="absolute -bottom-40 -left-20 h-[480px] w-[580px] rounded-full bg-[#10b981]/5 blur-[140px]" />
+        {/* Ambient Slate / Steel Glow (Bottom Left) */}
+        <div className="absolute -bottom-40 -left-20 h-[480px] w-[580px] rounded-full bg-[#334155]/20 blur-[150px]" />
 
-        {/* Subtle Violet / Indigo Glow (Right Center) */}
-        <div className="absolute top-1/3 -right-32 h-[500px] w-[600px] rounded-full bg-[#6366f1]/5 blur-[150px]" />
+        {/* Ambient Night Indigo Accent (Right Center) */}
+        <div className="absolute top-1/3 -right-32 h-[500px] w-[600px] rounded-full bg-[#4f46e5]/8 blur-[160px]" />
 
         {/* Minimalist Micro Dot Grid Overlay */}
         <div
-          className="absolute inset-0 opacity-[0.035]"
+          className="absolute inset-0 opacity-[0.03]"
           style={{
-            backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.8) 1px, transparent 1px)',
+            backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.7) 1px, transparent 1px)',
             backgroundSize: '28px 28px',
           }}
         />
 
         {/* Atmospheric Scrim */}
-        <div className="absolute inset-0 bg-radial from-transparent via-[#07070a]/40 to-[#07070a]" />
+        <div className="absolute inset-0 bg-radial from-transparent via-[#0D0F12]/50 to-[#0D0F12]" />
       </div>
 
       {/* 2. Left Column: Narrow Cinematic Sidebar */}
@@ -71,8 +72,8 @@ const DashboardLayout: React.FC = () => {
 
       {/* Toast Notification Glassmorphism Pill */}
       {toastMessage && (
-        <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 rounded-full border border-white/20 bg-black/80 px-5 py-3 text-xs font-bold text-white shadow-2xl backdrop-blur-2xl ring-1 ring-[#ff5e1e]/30 animate-in fade-in slide-in-from-bottom-4 duration-200">
-          <CheckCircle2 className="h-4 w-4 text-[#ff5e1e] shrink-0" />
+        <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 rounded-full border border-white/15 bg-[#161920]/90 px-5 py-3 text-xs font-semibold text-[#F8FAFC] shadow-2xl backdrop-blur-2xl ring-1 ring-[#6366F1]/30 animate-in fade-in slide-in-from-bottom-4 duration-200">
+          <CheckCircle2 className="h-4 w-4 text-[#6366F1] shrink-0" />
           <span>{toastMessage}</span>
         </div>
       )}
@@ -85,13 +86,13 @@ const AppContent: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-[#08080d] text-white">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-[#0D0F12] text-white">
         <div className="flex flex-col items-center gap-4">
-          <div className="flex h-12 w-12 items-center justify-center rounded-3xl bg-[#ff5e1e] text-white shadow-xl shadow-[#ff5e1e]/40 ring-1 ring-white/20 animate-pulse">
+          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[#4F46E5] to-[#6366F1] text-white shadow-xl shadow-[#6366F1]/30 ring-1 ring-white/20 animate-pulse">
             <Sparkles className="h-6 w-6" />
           </div>
-          <div className="flex items-center gap-2 text-xs font-semibold text-zinc-400">
-            <Loader2 className="h-3.5 w-3.5 animate-spin text-[#ff5e1e]" />
+          <div className="flex items-center gap-2 text-xs font-semibold text-[#94A3B8]">
+            <Loader2 className="h-3.5 w-3.5 animate-spin text-[#6366F1]" />
             <span>Caricamento sessione...</span>
           </div>
         </div>

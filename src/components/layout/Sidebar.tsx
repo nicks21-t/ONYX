@@ -27,7 +27,7 @@ const navItems: NavItem[] = [
   { id: 'panoramica', label: 'Panoramica', icon: LayoutDashboard },
   { id: 'lavoro', label: 'Lavoro & Turni', icon: CalendarClock, badge: 'Oggi 14:00' },
   { id: 'routine', label: 'Routine & Sport', icon: Activity, badge: '4/6' },
-  { id: 'finanze', label: 'Finanze', icon: Wallet },
+  { id: 'finanze', label: 'Finance', icon: Wallet },
   { id: 'promemoria', label: 'Promemoria', icon: CheckSquare, badge: 3 },
 ];
 

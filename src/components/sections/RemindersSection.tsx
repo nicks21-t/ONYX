@@ -53,10 +53,10 @@ export const RemindersSection: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-3xl font-extrabold tracking-tight text-white">
+          <h1 className="text-3xl font-extrabold tracking-tight text-[#F1F5F9]">
             Promemoria & Scadenze
           </h1>
-          <p className="text-xs text-zinc-400">
+          <p className="text-xs text-[#94A3B8]">
             {pendingCount} task attive ({urgentCount} priorità urgente)
           </p>
         </div>
@@ -64,7 +64,7 @@ export const RemindersSection: React.FC = () => {
         <button
           type="button"
           onClick={() => setIsAdding(true)}
-          className="flex items-center gap-1.5 rounded-full bg-[#ff5e1e] hover:bg-[#ff7844] px-5 py-2 text-xs font-bold text-white shadow-xl shadow-[#ff5e1e]/30 transition-all self-start sm:self-auto cursor-pointer ring-1 ring-white/20"
+          className="flex items-center gap-1.5 rounded-full bg-gradient-to-r from-[#4F46E5] to-[#6366F1] hover:brightness-110 px-5 py-2 text-xs font-semibold text-white shadow-xl shadow-[#6366F1]/20 transition-all self-start sm:self-auto cursor-pointer ring-1 ring-white/10"
         >
           <Plus className="h-4 w-4" />
           <span>Nuovo Promemoria</span>
@@ -75,16 +75,16 @@ export const RemindersSection: React.FC = () => {
       {isAdding && (
         <form
           onSubmit={handleCreate}
-          className="rounded-3xl border border-white/15 bg-black/60 backdrop-blur-2xl p-6 sm:p-8 space-y-4 shadow-2xl"
+          className="card-onyx rounded-3xl p-6 sm:p-8 space-y-4 shadow-2xl"
         >
-          <div className="flex items-center justify-between border-b border-white/10 pb-4">
-            <h3 className="text-sm font-bold text-white">
+          <div className="flex items-center justify-between border-b border-white/[0.08] pb-4">
+            <h3 className="text-sm font-bold text-[#F1F5F9]">
               Crea Promemoria o Scadenza
             </h3>
             <button
               type="button"
               onClick={() => setIsAdding(false)}
-              className="text-xs text-zinc-400 hover:text-white cursor-pointer"
+              className="text-xs text-[#94A3B8] hover:text-white cursor-pointer"
             >
               Annulla
             </button>
@@ -92,7 +92,7 @@ export const RemindersSection: React.FC = () => {
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-4">
             <div className="sm:col-span-2">
-              <label className="block text-xs font-semibold text-zinc-400 mb-1">
+              <label className="block text-xs font-semibold text-[#94A3B8] mb-1">
                 Cosa devi ricordare?
               </label>
               <input
@@ -100,19 +100,19 @@ export const RemindersSection: React.FC = () => {
                 value={newTitle}
                 onChange={e => setNewTitle(e.target.value)}
                 placeholder="Es. Invio cartella clinica"
-                className="w-full rounded-2xl border border-white/15 bg-black/40 px-3.5 py-2.5 text-xs text-white focus:outline-hidden focus:border-[#ff5e1e]"
+                className="w-full rounded-2xl border border-white/[0.08] bg-[#0D0F12] px-3.5 py-2.5 text-xs text-[#F8FAFC] focus:outline-hidden focus:border-[#6366F1]"
                 required
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-zinc-400 mb-1">
+              <label className="block text-xs font-semibold text-[#94A3B8] mb-1">
                 Priorità
               </label>
               <select
                 value={newPriority}
                 onChange={e => setNewPriority(e.target.value as ReminderPriority)}
-                className="w-full rounded-2xl border border-white/15 bg-black/40 px-3.5 py-2.5 text-xs text-white focus:outline-hidden focus:border-[#ff5e1e]"
+                className="w-full rounded-2xl border border-white/[0.08] bg-[#0D0F12] px-3.5 py-2.5 text-xs text-[#F8FAFC] focus:outline-hidden focus:border-[#6366F1]"
               >
                 <option value="urgente">Urgente</option>
                 <option value="media">Media</option>
@@ -121,13 +121,13 @@ export const RemindersSection: React.FC = () => {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-zinc-400 mb-1">
+              <label className="block text-xs font-semibold text-[#94A3B8] mb-1">
                 Categoria
               </label>
               <select
                 value={newCategory}
                 onChange={e => setNewCategory(e.target.value as ReminderCategory)}
-                className="w-full rounded-2xl border border-white/15 bg-black/40 px-3.5 py-2.5 text-xs text-white focus:outline-hidden focus:border-[#ff5e1e]"
+                className="w-full rounded-2xl border border-white/[0.08] bg-[#0D0F12] px-3.5 py-2.5 text-xs text-[#F8FAFC] focus:outline-hidden focus:border-[#6366F1]"
               >
                 <option value="lavoro">Lavoro</option>
                 <option value="personale">Personale</option>
@@ -137,7 +137,7 @@ export const RemindersSection: React.FC = () => {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-zinc-400 mb-1">
+              <label className="block text-xs font-semibold text-[#94A3B8] mb-1">
                 Data Scadenza
               </label>
               <input
@@ -145,19 +145,19 @@ export const RemindersSection: React.FC = () => {
                 value={newDueDate}
                 onChange={e => setNewDueDate(e.target.value)}
                 placeholder="Oggi / 25 Ottobre"
-                className="w-full rounded-2xl border border-white/15 bg-black/40 px-3.5 py-2.5 text-xs text-white focus:outline-hidden focus:border-[#ff5e1e]"
+                className="w-full rounded-2xl border border-white/[0.08] bg-[#0D0F12] px-3.5 py-2.5 text-xs text-[#F8FAFC] focus:outline-hidden focus:border-[#6366F1]"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-zinc-400 mb-1">
+              <label className="block text-xs font-semibold text-[#94A3B8] mb-1">
                 Orario Opzionale
               </label>
               <input
                 type="time"
                 value={newDueTime}
                 onChange={e => setNewDueTime(e.target.value)}
-                className="w-full rounded-2xl border border-white/15 bg-black/40 px-3.5 py-2.5 text-xs text-white focus:outline-hidden focus:border-[#ff5e1e]"
+                className="w-full rounded-2xl border border-white/[0.08] bg-[#0D0F12] px-3.5 py-2.5 text-xs text-[#F8FAFC] focus:outline-hidden focus:border-[#6366F1]"
               />
             </div>
           </div>
@@ -166,13 +166,13 @@ export const RemindersSection: React.FC = () => {
             <button
               type="button"
               onClick={() => setIsAdding(false)}
-              className="rounded-full px-4 py-2 text-xs font-medium text-zinc-400 hover:text-white cursor-pointer"
+              className="rounded-full px-4 py-2 text-xs font-medium text-[#94A3B8] hover:text-white cursor-pointer"
             >
               Annulla
             </button>
             <button
               type="submit"
-              className="rounded-full bg-[#ff5e1e] px-5 py-2 text-xs font-bold text-white hover:bg-[#ff7844] cursor-pointer"
+              className="rounded-full bg-gradient-to-r from-[#4F46E5] to-[#6366F1] hover:brightness-110 px-5 py-2 text-xs font-semibold text-white shadow-md shadow-[#6366F1]/20 cursor-pointer"
             >
               Crea Promemoria
             </button>
@@ -180,8 +180,8 @@ export const RemindersSection: React.FC = () => {
         </form>
       )}
 
-      {/* Filter Tabs (Glassmorphic pill style) */}
-      <div className="flex flex-wrap items-center gap-1.5 rounded-full border border-white/15 bg-black/40 backdrop-blur-xl p-1.5 max-w-fit shadow-xl">
+      {/* Filter Tabs */}
+      <div className="flex flex-wrap items-center gap-1.5 rounded-full border border-white/[0.08] bg-[#0D0F12]/80 p-1.5 max-w-fit shadow-xl">
         {[
           { id: 'all', label: 'Tutti', count: reminders.length },
           { id: 'pending', label: 'Da Fare', count: pendingCount },
@@ -194,14 +194,14 @@ export const RemindersSection: React.FC = () => {
             onClick={() => setFilterTab(tab.id as typeof filterTab)}
             className={`flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-semibold transition-all cursor-pointer ${
               filterTab === tab.id
-                ? 'bg-white text-black shadow-lg ring-1 ring-white'
-                : 'text-zinc-300 hover:text-white hover:bg-white/[0.08]'
+                ? 'bg-gradient-to-b from-[#F8FAFC] to-[#E2E8F0] text-[#0D0F12] shadow-sm'
+                : 'text-[#94A3B8] hover:text-[#F8FAFC] hover:bg-white/[0.04]'
             }`}
           >
             <span>{tab.label}</span>
             <span
               className={`rounded-full px-1.5 py-0.2 text-[10px] font-mono tabular-nums ${
-                filterTab === tab.id ? 'bg-black/15 text-black font-bold' : 'bg-white/10 text-zinc-300'
+                filterTab === tab.id ? 'bg-black/15 text-black font-bold' : 'bg-white/10 text-[#94A3B8]'
               }`}
             >
               {tab.count}
@@ -211,21 +211,21 @@ export const RemindersSection: React.FC = () => {
       </div>
 
       {/* Task List */}
-      <div className="rounded-3xl border border-white/10 bg-black/40 backdrop-blur-2xl p-6 sm:p-8 shadow-2xl">
-        <div className="divide-y divide-white/5">
+      <div className="card-onyx rounded-3xl p-6 sm:p-8 shadow-2xl">
+        <div className="divide-y divide-white/[0.06]">
           {filteredReminders.length === 0 ? (
             <div className="py-12 text-center flex flex-col items-center justify-center">
-              <div className="h-12 w-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-zinc-500 mb-3">
-                <CheckSquare className="h-6 w-6 text-[#ff5e1e]" />
+              <div className="h-12 w-12 rounded-2xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-[#94A3B8] mb-3">
+                <CheckSquare className="h-6 w-6 text-[#818CF8]" />
               </div>
-              <p className="text-sm font-semibold text-white">Nessun promemoria presente</p>
-              <p className="text-xs text-zinc-400 mt-1 max-w-sm">
+              <p className="text-sm font-semibold text-[#F1F5F9]">Nessun promemoria presente</p>
+              <p className="text-xs text-[#94A3B8] mt-1 max-w-sm">
                 La tua lista delle attività è vuota. Clicca su "+ Nuovo Promemoria" per inserire la prima scadenza.
               </p>
               <button
                 type="button"
                 onClick={() => setIsAdding(true)}
-                className="mt-4 rounded-full bg-[#ff5e1e] hover:bg-[#ff7844] px-5 py-2 text-xs font-bold text-white shadow-lg shadow-[#ff5e1e]/30 cursor-pointer"
+                className="mt-4 rounded-full bg-gradient-to-r from-[#4F46E5] to-[#6366F1] hover:brightness-110 px-5 py-2 text-xs font-semibold text-white shadow-lg shadow-[#6366F1]/20 cursor-pointer"
               >
                 + Crea primo promemoria
               </button>
@@ -245,8 +245,8 @@ export const RemindersSection: React.FC = () => {
                   aria-label={`Completa ${reminder.title}`}
                   className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border transition-all cursor-pointer ${
                     reminder.completed
-                      ? 'border-[#ff5e1e] bg-[#ff5e1e] text-white shadow-lg shadow-[#ff5e1e]/40'
-                      : 'border-zinc-500 bg-transparent hover:border-white'
+                      ? 'border-emerald-500 bg-emerald-500 text-white shadow-lg shadow-emerald-500/30'
+                      : 'border-zinc-500 bg-transparent hover:border-[#E2E8F0]'
                   }`}
                 >
                   {reminder.completed && <Check className="h-3 w-3 stroke-[3]" />}
@@ -256,29 +256,29 @@ export const RemindersSection: React.FC = () => {
                   <p
                     onClick={() => toggleReminder(reminder.id)}
                     className={`cursor-pointer text-sm font-bold leading-relaxed ${
-                      reminder.completed ? 'line-through text-zinc-500' : 'text-white'
+                      reminder.completed ? 'line-through text-[#64748B]' : 'text-[#F1F5F9]'
                     }`}
                   >
                     {reminder.title}
                   </p>
 
                   <div className="flex flex-wrap items-center gap-2 text-[11px]">
-                    <span className="rounded-full bg-white/[0.06] border border-white/10 px-2.5 py-0.5 text-zinc-300 capitalize font-medium">
+                    <span className="rounded-full bg-white/[0.04] border border-white/[0.08] px-2.5 py-0.5 text-[#E2E8F0] capitalize font-medium">
                       {reminder.category}
                     </span>
                     <span
-                      className={`rounded-full px-2.5 py-0.5 font-bold uppercase tracking-wider text-[10px] ${
+                      className={`rounded-full px-2.5 py-0.5 font-semibold uppercase tracking-wider text-[10px] ${
                         reminder.priority === 'urgente'
-                          ? 'bg-[#ff5e1e]/20 text-[#ff7844] border border-[#ff5e1e]/40'
+                          ? 'bg-rose-500/15 text-rose-300 border border-rose-500/30'
                           : reminder.priority === 'media'
-                          ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
-                          : 'bg-white/[0.06] text-zinc-300 border border-white/10'
+                          ? 'bg-[#6366F1]/15 text-[#A5B4FC] border border-[#6366F1]/30'
+                          : 'bg-white/[0.04] text-[#94A3B8] border border-white/[0.08]'
                       }`}
                     >
                       {reminder.priority}
                     </span>
-                    <span className="flex items-center gap-1 text-zinc-400">
-                      <Clock className="h-3 w-3 text-zinc-400" />
+                    <span className="flex items-center gap-1 text-[#94A3B8]">
+                      <Clock className="h-3 w-3 text-[#94A3B8]" />
                       <span>{reminder.dueDate} {reminder.dueTime ? `alle ${reminder.dueTime}` : ''}</span>
                     </span>
                   </div>
@@ -288,13 +288,13 @@ export const RemindersSection: React.FC = () => {
               <button
                 type="button"
                 onClick={() => deleteReminder(reminder.id)}
-                className="p-2 text-zinc-400 hover:text-rose-400 transition-colors cursor-pointer"
+                className="p-2 text-[#94A3B8] hover:text-rose-400 transition-colors cursor-pointer"
                 aria-label="Elimina promemoria"
               >
                 <Trash2 className="h-4 w-4" />
               </button>
             </div>
-          ))}
+          )))}
         </div>
       </div>
     </div>

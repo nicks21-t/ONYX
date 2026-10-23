@@ -113,30 +113,30 @@ export const QuickActionModal: React.FC = () => {
         onClick={closeQuickModal}
       />
 
-      {/* Modal Container */}
-      <div className="relative w-full max-w-lg rounded-3xl border border-white/20 bg-black/80 backdrop-blur-2xl p-6 sm:p-8 shadow-2xl z-10 animate-in fade-in zoom-in-95 duration-150">
-        <div className="flex items-center justify-between border-b border-white/10 pb-4">
-          <h2 className="text-base font-bold text-white">
+      {/* Modal Container in Slate Premium Style */}
+      <div className="relative w-full max-w-lg rounded-3xl border border-white/10 bg-[#161920]/95 backdrop-blur-2xl p-6 sm:p-8 shadow-2xl z-10 animate-in fade-in zoom-in-95 duration-150">
+        <div className="flex items-center justify-between border-b border-white/[0.08] pb-4">
+          <h2 className="text-base font-bold text-[#F1F5F9]">
             Nuova Voce Rapida
           </h2>
           <button
             type="button"
             onClick={closeQuickModal}
-            className="rounded-full p-2 text-zinc-400 hover:text-white hover:bg-white/[0.08] cursor-pointer"
+            className="rounded-full p-2 text-[#94A3B8] hover:text-[#F8FAFC] hover:bg-white/[0.08] cursor-pointer"
           >
             <X className="h-5 w-5" />
           </button>
         </div>
 
         {/* Tab Pills */}
-        <div className="mt-5 grid grid-cols-4 gap-1 rounded-full border border-white/15 bg-black/50 p-1">
+        <div className="mt-5 grid grid-cols-4 gap-1 rounded-full border border-white/[0.08] bg-[#0D0F12]/80 p-1">
           <button
             type="button"
             onClick={() => setQuickModalTab('spesa')}
             className={`flex items-center justify-center gap-1.5 rounded-full py-2 text-xs font-semibold transition-all cursor-pointer ${
               quickModalTab === 'spesa'
-                ? 'bg-white text-black shadow-md'
-                : 'text-zinc-400 hover:text-white'
+                ? 'bg-gradient-to-b from-[#F8FAFC] to-[#E2E8F0] text-[#0D0F12] shadow-sm'
+                : 'text-[#94A3B8] hover:text-[#F8FAFC]'
             }`}
           >
             <Wallet className="h-3.5 w-3.5" />
@@ -148,8 +148,8 @@ export const QuickActionModal: React.FC = () => {
             onClick={() => setQuickModalTab('promemoria')}
             className={`flex items-center justify-center gap-1.5 rounded-full py-2 text-xs font-semibold transition-all cursor-pointer ${
               quickModalTab === 'promemoria'
-                ? 'bg-white text-black shadow-md'
-                : 'text-zinc-400 hover:text-white'
+                ? 'bg-gradient-to-b from-[#F8FAFC] to-[#E2E8F0] text-[#0D0F12] shadow-sm'
+                : 'text-[#94A3B8] hover:text-[#F8FAFC]'
             }`}
           >
             <CheckSquare className="h-3.5 w-3.5" />
@@ -161,8 +161,8 @@ export const QuickActionModal: React.FC = () => {
             onClick={() => setQuickModalTab('abitudine')}
             className={`flex items-center justify-center gap-1.5 rounded-full py-2 text-xs font-semibold transition-all cursor-pointer ${
               quickModalTab === 'abitudine'
-                ? 'bg-white text-black shadow-md'
-                : 'text-zinc-400 hover:text-white'
+                ? 'bg-gradient-to-b from-[#F8FAFC] to-[#E2E8F0] text-[#0D0F12] shadow-sm'
+                : 'text-[#94A3B8] hover:text-[#F8FAFC]'
             }`}
           >
             <Activity className="h-3.5 w-3.5" />
@@ -174,8 +174,8 @@ export const QuickActionModal: React.FC = () => {
             onClick={() => setQuickModalTab('turno')}
             className={`flex items-center justify-center gap-1.5 rounded-full py-2 text-xs font-semibold transition-all cursor-pointer ${
               quickModalTab === 'turno'
-                ? 'bg-white text-black shadow-md'
-                : 'text-zinc-400 hover:text-white'
+                ? 'bg-gradient-to-b from-[#F8FAFC] to-[#E2E8F0] text-[#0D0F12] shadow-sm'
+                : 'text-[#94A3B8] hover:text-[#F8FAFC]'
             }`}
           >
             <CalendarClock className="h-3.5 w-3.5" />
@@ -187,7 +187,7 @@ export const QuickActionModal: React.FC = () => {
         {quickModalTab === 'spesa' && (
           <form onSubmit={handleSubmitExpense} className="mt-6 space-y-4">
             <div>
-              <label className="block text-xs font-semibold text-zinc-400 mb-1">
+              <label className="block text-xs font-semibold text-[#94A3B8] mb-1">
                 Descrizione Movimento
               </label>
               <input
@@ -195,14 +195,14 @@ export const QuickActionModal: React.FC = () => {
                 value={expenseTitle}
                 onChange={e => setExpenseTitle(e.target.value)}
                 placeholder="Es. Pranzo di lavoro"
-                className="w-full rounded-2xl border border-white/15 bg-black/40 px-3.5 py-2.5 text-xs text-white focus:outline-hidden focus:border-[#ff5e1e]"
+                className="w-full rounded-2xl border border-white/[0.08] bg-[#0D0F12] px-3.5 py-2.5 text-xs text-[#F8FAFC] focus:outline-hidden focus:border-[#6366F1]"
                 required
               />
             </div>
 
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs font-semibold text-zinc-400 mb-1">
+                <label className="block text-xs font-semibold text-[#94A3B8] mb-1">
                   Importo (€)
                 </label>
                 <input
@@ -211,19 +211,19 @@ export const QuickActionModal: React.FC = () => {
                   value={expenseAmount}
                   onChange={e => setExpenseAmount(e.target.value)}
                   placeholder="0.00"
-                  className="w-full rounded-2xl border border-white/15 bg-black/40 px-3.5 py-2.5 text-xs text-white focus:outline-hidden focus:border-[#ff5e1e]"
+                  className="w-full rounded-2xl border border-white/[0.08] bg-[#0D0F12] px-3.5 py-2.5 text-xs text-[#F8FAFC] focus:outline-hidden focus:border-[#6366F1]"
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-zinc-400 mb-1">
+                <label className="block text-xs font-semibold text-[#94A3B8] mb-1">
                   Tipologia
                 </label>
                 <select
                   value={expenseType}
                   onChange={e => setExpenseType(e.target.value as 'expense' | 'income')}
-                  className="w-full rounded-2xl border border-white/15 bg-black/40 px-3.5 py-2.5 text-xs text-white focus:outline-hidden focus:border-[#ff5e1e]"
+                  className="w-full rounded-2xl border border-white/[0.08] bg-[#0D0F12] px-3.5 py-2.5 text-xs text-[#F8FAFC] focus:outline-hidden focus:border-[#6366F1]"
                 >
                   <option value="expense">Uscita / Spesa (-)</option>
                   <option value="income">Entrata / Guadagno (+)</option>
@@ -232,13 +232,13 @@ export const QuickActionModal: React.FC = () => {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-zinc-400 mb-1">
+              <label className="block text-xs font-semibold text-[#94A3B8] mb-1">
                 Categoria
               </label>
               <select
                 value={expenseCategory}
                 onChange={e => setExpenseCategory(e.target.value as Transaction['category'])}
-                className="w-full rounded-2xl border border-white/15 bg-black/40 px-3.5 py-2.5 text-xs text-white focus:outline-hidden focus:border-[#ff5e1e]"
+                className="w-full rounded-2xl border border-white/[0.08] bg-[#0D0F12] px-3.5 py-2.5 text-xs text-[#F8FAFC] focus:outline-hidden focus:border-[#6366F1]"
               >
                 <option value="alimentari">Spesa Alimentari</option>
                 <option value="casa">Casa & Utenze</option>
@@ -249,17 +249,17 @@ export const QuickActionModal: React.FC = () => {
               </select>
             </div>
 
-            <div className="flex justify-end gap-3 pt-3 border-t border-white/10">
+            <div className="flex justify-end gap-3 pt-3 border-t border-white/[0.08]">
               <button
                 type="button"
                 onClick={closeQuickModal}
-                className="rounded-full px-4 py-2 text-xs font-medium text-zinc-400 hover:text-white cursor-pointer"
+                className="rounded-full px-4 py-2 text-xs font-medium text-[#94A3B8] hover:text-white cursor-pointer"
               >
                 Annulla
               </button>
               <button
                 type="submit"
-                className="rounded-full bg-[#ff5e1e] px-5 py-2 text-xs font-bold text-white hover:bg-[#ff7844] cursor-pointer"
+                className="rounded-full bg-gradient-to-r from-[#4F46E5] to-[#6366F1] hover:brightness-110 px-5 py-2 text-xs font-semibold text-white shadow-md shadow-[#6366F1]/20 cursor-pointer"
               >
                 Salva Spesa
               </button>
@@ -271,7 +271,7 @@ export const QuickActionModal: React.FC = () => {
         {quickModalTab === 'promemoria' && (
           <form onSubmit={handleSubmitReminder} className="mt-6 space-y-4">
             <div>
-              <label className="block text-xs font-semibold text-zinc-400 mb-1">
+              <label className="block text-xs font-semibold text-[#94A3B8] mb-1">
                 Cosa devi ricordare?
               </label>
               <input
@@ -279,20 +279,20 @@ export const QuickActionModal: React.FC = () => {
                 value={reminderTitle}
                 onChange={e => setReminderTitle(e.target.value)}
                 placeholder="Es. Invio turni ferie"
-                className="w-full rounded-2xl border border-white/15 bg-black/40 px-3.5 py-2.5 text-xs text-white focus:outline-hidden focus:border-[#ff5e1e]"
+                className="w-full rounded-2xl border border-white/[0.08] bg-[#0D0F12] px-3.5 py-2.5 text-xs text-[#F8FAFC] focus:outline-hidden focus:border-[#6366F1]"
                 required
               />
             </div>
 
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs font-semibold text-zinc-400 mb-1">
+                <label className="block text-xs font-semibold text-[#94A3B8] mb-1">
                   Priorità
                 </label>
                 <select
                   value={reminderPriority}
                   onChange={e => setReminderPriority(e.target.value as ReminderPriority)}
-                  className="w-full rounded-2xl border border-white/15 bg-black/40 px-3.5 py-2.5 text-xs text-white focus:outline-hidden focus:border-[#ff5e1e]"
+                  className="w-full rounded-2xl border border-white/[0.08] bg-[#0D0F12] px-3.5 py-2.5 text-xs text-[#F8FAFC] focus:outline-hidden focus:border-[#6366F1]"
                 >
                   <option value="urgente">Urgente</option>
                   <option value="media">Media</option>
@@ -301,7 +301,7 @@ export const QuickActionModal: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-zinc-400 mb-1">
+                <label className="block text-xs font-semibold text-[#94A3B8] mb-1">
                   Scadenza
                 </label>
                 <input
@@ -309,22 +309,22 @@ export const QuickActionModal: React.FC = () => {
                   value={reminderDue}
                   onChange={e => setReminderDue(e.target.value)}
                   placeholder="Oggi / Domani"
-                  className="w-full rounded-2xl border border-white/15 bg-black/40 px-3.5 py-2.5 text-xs text-white focus:outline-hidden focus:border-[#ff5e1e]"
+                  className="w-full rounded-2xl border border-white/[0.08] bg-[#0D0F12] px-3.5 py-2.5 text-xs text-[#F8FAFC] focus:outline-hidden focus:border-[#6366F1]"
                 />
               </div>
             </div>
 
-            <div className="flex justify-end gap-3 pt-3 border-t border-white/10">
+            <div className="flex justify-end gap-3 pt-3 border-t border-white/[0.08]">
               <button
                 type="button"
                 onClick={closeQuickModal}
-                className="rounded-full px-4 py-2 text-xs font-medium text-zinc-400 hover:text-white cursor-pointer"
+                className="rounded-full px-4 py-2 text-xs font-medium text-[#94A3B8] hover:text-white cursor-pointer"
               >
                 Annulla
               </button>
               <button
                 type="submit"
-                className="rounded-full bg-[#ff5e1e] px-5 py-2 text-xs font-bold text-white hover:bg-[#ff7844] cursor-pointer"
+                className="rounded-full bg-gradient-to-r from-[#4F46E5] to-[#6366F1] hover:brightness-110 px-5 py-2 text-xs font-semibold text-white shadow-md shadow-[#6366F1]/20 cursor-pointer"
               >
                 Crea Task
               </button>
@@ -336,7 +336,7 @@ export const QuickActionModal: React.FC = () => {
         {quickModalTab === 'abitudine' && (
           <form onSubmit={handleSubmitHabit} className="mt-6 space-y-4">
             <div>
-              <label className="block text-xs font-semibold text-zinc-400 mb-1">
+              <label className="block text-xs font-semibold text-[#94A3B8] mb-1">
                 Nome Routine
               </label>
               <input
@@ -344,20 +344,20 @@ export const QuickActionModal: React.FC = () => {
                 value={habitTitle}
                 onChange={e => setHabitTitle(e.target.value)}
                 placeholder="Es. Corsa 10km"
-                className="w-full rounded-2xl border border-white/15 bg-black/40 px-3.5 py-2.5 text-xs text-white focus:outline-hidden focus:border-[#ff5e1e]"
+                className="w-full rounded-2xl border border-white/[0.08] bg-[#0D0F12] px-3.5 py-2.5 text-xs text-[#F8FAFC] focus:outline-hidden focus:border-[#6366F1]"
                 required
               />
             </div>
 
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs font-semibold text-zinc-400 mb-1">
+                <label className="block text-xs font-semibold text-[#94A3B8] mb-1">
                   Categoria
                 </label>
                 <select
                   value={habitCat}
                   onChange={e => setHabitCat(e.target.value as HabitCategory)}
-                  className="w-full rounded-2xl border border-white/15 bg-black/40 px-3.5 py-2.5 text-xs text-white focus:outline-hidden focus:border-[#ff5e1e]"
+                  className="w-full rounded-2xl border border-white/[0.08] bg-[#0D0F12] px-3.5 py-2.5 text-xs text-[#F8FAFC] focus:outline-hidden focus:border-[#6366F1]"
                 >
                   <option value="sport">Sport</option>
                   <option value="salute">Salute</option>
@@ -367,7 +367,7 @@ export const QuickActionModal: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-zinc-400 mb-1">
+                <label className="block text-xs font-semibold text-[#94A3B8] mb-1">
                   Obiettivo
                 </label>
                 <input
@@ -375,22 +375,22 @@ export const QuickActionModal: React.FC = () => {
                   value={habitTarget}
                   onChange={e => setHabitTarget(e.target.value)}
                   placeholder="Es. 30 min"
-                  className="w-full rounded-2xl border border-white/15 bg-black/40 px-3.5 py-2.5 text-xs text-white focus:outline-hidden focus:border-[#ff5e1e]"
+                  className="w-full rounded-2xl border border-white/[0.08] bg-[#0D0F12] px-3.5 py-2.5 text-xs text-[#F8FAFC] focus:outline-hidden focus:border-[#6366F1]"
                 />
               </div>
             </div>
 
-            <div className="flex justify-end gap-3 pt-3 border-t border-white/10">
+            <div className="flex justify-end gap-3 pt-3 border-t border-white/[0.08]">
               <button
                 type="button"
                 onClick={closeQuickModal}
-                className="rounded-full px-4 py-2 text-xs font-medium text-zinc-400 hover:text-white cursor-pointer"
+                className="rounded-full px-4 py-2 text-xs font-medium text-[#94A3B8] hover:text-white cursor-pointer"
               >
                 Annulla
               </button>
               <button
                 type="submit"
-                className="rounded-full bg-[#ff5e1e] px-5 py-2 text-xs font-bold text-white hover:bg-[#ff7844] cursor-pointer"
+                className="rounded-full bg-gradient-to-r from-[#4F46E5] to-[#6366F1] hover:brightness-110 px-5 py-2 text-xs font-semibold text-white shadow-md shadow-[#6366F1]/20 cursor-pointer"
               >
                 Salva Routine
               </button>
@@ -402,27 +402,27 @@ export const QuickActionModal: React.FC = () => {
         {quickModalTab === 'turno' && (
           <form onSubmit={handleSubmitShift} className="mt-6 space-y-4">
             <div>
-              <label className="block text-xs font-semibold text-zinc-400 mb-1">
+              <label className="block text-xs font-semibold text-[#94A3B8] mb-1">
                 Nome Turno
               </label>
               <input
                 type="text"
                 value={shiftTitle}
                 onChange={e => setShiftTitle(e.target.value)}
-                className="w-full rounded-2xl border border-white/15 bg-black/40 px-3.5 py-2.5 text-xs text-white focus:outline-hidden focus:border-[#ff5e1e]"
+                className="w-full rounded-2xl border border-white/[0.08] bg-[#0D0F12] px-3.5 py-2.5 text-xs text-[#F8FAFC] focus:outline-hidden focus:border-[#6366F1]"
                 required
               />
             </div>
 
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs font-semibold text-zinc-400 mb-1">
+                <label className="block text-xs font-semibold text-[#94A3B8] mb-1">
                   Tipologia
                 </label>
                 <select
                   value={shiftType}
                   onChange={e => setShiftType(e.target.value as ShiftType)}
-                  className="w-full rounded-2xl border border-white/15 bg-black/40 px-3.5 py-2.5 text-xs text-white focus:outline-hidden focus:border-[#ff5e1e]"
+                  className="w-full rounded-2xl border border-white/[0.08] bg-[#0D0F12] px-3.5 py-2.5 text-xs text-[#F8FAFC] focus:outline-hidden focus:border-[#6366F1]"
                 >
                   <option value="mattina">Mattina (07-15)</option>
                   <option value="pomeriggio">Pomeriggio (14-22)</option>
@@ -433,29 +433,29 @@ export const QuickActionModal: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-zinc-400 mb-1">
+                <label className="block text-xs font-semibold text-[#94A3B8] mb-1">
                   Data
                 </label>
                 <input
                   type="date"
                   value={shiftDate}
                   onChange={e => setShiftDate(e.target.value)}
-                  className="w-full rounded-2xl border border-white/15 bg-black/40 px-3.5 py-2.5 text-xs text-white focus:outline-hidden focus:border-[#ff5e1e]"
+                  className="w-full rounded-2xl border border-white/[0.08] bg-[#0D0F12] px-3.5 py-2.5 text-xs text-[#F8FAFC] focus:outline-hidden focus:border-[#6366F1]"
                 />
               </div>
             </div>
 
-            <div className="flex justify-end gap-3 pt-3 border-t border-white/10">
+            <div className="flex justify-end gap-3 pt-3 border-t border-white/[0.08]">
               <button
                 type="button"
                 onClick={closeQuickModal}
-                className="rounded-full px-4 py-2 text-xs font-medium text-zinc-400 hover:text-white cursor-pointer"
+                className="rounded-full px-4 py-2 text-xs font-medium text-[#94A3B8] hover:text-white cursor-pointer"
               >
                 Annulla
               </button>
               <button
                 type="submit"
-                className="rounded-full bg-[#ff5e1e] px-5 py-2 text-xs font-bold text-white hover:bg-[#ff7844] cursor-pointer"
+                className="rounded-full bg-gradient-to-r from-[#4F46E5] to-[#6366F1] hover:brightness-110 px-5 py-2 text-xs font-semibold text-white shadow-md shadow-[#6366F1]/20 cursor-pointer"
               >
                 Aggiungi Turno
               </button>

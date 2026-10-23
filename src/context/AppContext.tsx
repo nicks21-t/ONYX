@@ -23,7 +23,6 @@ import {
   fetchUserTurni,
   insertDbSpesa,
   insertDbTurno,
-  seedInitialUserRecords,
   DbSpesa,
   DbTurno
 } from '../lib/supabase';
@@ -116,6 +115,9 @@ interface AppContextType {
   setSelectedShiftId: (id: string) => void;
   toggleClockIn: (shiftId: string) => void;
   addShift: (shift: Omit<Shift, 'id'>) => Promise<void>;
+  updateShift: (shift: Shift) => Promise<void>;
+  bulkSetShifts: (shifts: Shift[]) => Promise<void>;
+  deleteShift: (id: string) => void;
 
   // Habits
   habits: Habit[];
@@ -125,6 +127,10 @@ interface AppContextType {
   // Finances
   transactions: Transaction[];
   budgetCategories: BudgetCategory[];
+  updateBudgetCategory: (id: string, newBudget: number) => void;
+  updateAllBudgetCategories: (newCategories: BudgetCategory[]) => void;
+  savingsGoal: number;
+  updateSavingsGoal: (newGoal: number) => void;
   addTransaction: (tx: Omit<Transaction, 'id'>) => Promise<void>;
   totalIncome: number;
   totalExpenses: number;
@@ -205,7 +211,24 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     return [];
   });
   const [transactions, setTransactions] = useState<Transaction[]>(() => (isDemo ? initialTransactions : []));
-  const [budgetCategories] = useState<BudgetCategory[]>(initialBudgetCategories);
+  const [budgetCategories, setBudgetCategories] = useState<BudgetCategory[]>(() => {
+    if (user?.id) {
+      try {
+        const stored = localStorage.getItem(`onyx_budget_caps_${user.id}`);
+        if (stored) return JSON.parse(stored);
+      } catch {}
+    }
+    return initialBudgetCategories;
+  });
+  const [savingsGoal, setSavingsGoal] = useState<number>(() => {
+    if (user?.id) {
+      try {
+        const stored = localStorage.getItem(`onyx_savings_goal_${user.id}`);
+        if (stored) return parseFloat(stored);
+      } catch {}
+    }
+    return 10000;
+  });
   const [reminders, setReminders] = useState<Reminder[]>(() => {
     if (isDemo) return initialReminders;
     if (user?.id) {
@@ -346,6 +369,33 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     showToast('Nuovo turno aggiunto al calendario');
   };
 
+  const updateShift = async (updated: Shift) => {
+    setShifts(prev => prev.map(s => (s.id === updated.id ? updated : s)));
+    if (user?.id && user.id !== 'demo-user-123') {
+      try {
+        localStorage.setItem(`onyx_shifts_${user.id}`, JSON.stringify(
+          shifts.map(s => (s.id === updated.id ? updated : s))
+        ));
+      } catch {}
+    }
+    showToast(`Turno del ${updated.date} aggiornato`);
+  };
+
+  const bulkSetShifts = async (newShifts: Shift[]) => {
+    setShifts(newShifts);
+    if (user?.id && user.id !== 'demo-user-123') {
+      try {
+        localStorage.setItem(`onyx_shifts_${user.id}`, JSON.stringify(newShifts));
+      } catch {}
+    }
+    showToast(`Roster mensile configurato (${newShifts.length} turni generati)`);
+  };
+
+  const deleteShift = (id: string) => {
+    setShifts(prev => prev.filter(s => s.id !== id));
+    showToast('Turno rimosso dal roster');
+  };
+
   // Habit methods
   const toggleHabit = (id: string) => {
     setHabits(prev => {
@@ -429,6 +479,33 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     showToast(`Registrato: ${tx.title} (€${tx.amount.toFixed(2)})`);
   };
 
+  const updateBudgetCategory = (id: string, newBudget: number) => {
+    setBudgetCategories(prev => {
+      const updated = prev.map(c => (c.id === id ? { ...c, budget: newBudget } : c));
+      if (user?.id) {
+        try { localStorage.setItem(`onyx_budget_caps_${user.id}`, JSON.stringify(updated)); } catch {}
+      }
+      return updated;
+    });
+    showToast('Tetto di spesa aggiornato');
+  };
+
+  const updateAllBudgetCategories = (newCategories: BudgetCategory[]) => {
+    setBudgetCategories(newCategories);
+    if (user?.id) {
+      try { localStorage.setItem(`onyx_budget_caps_${user.id}`, JSON.stringify(newCategories)); } catch {}
+    }
+    showToast('Tutti i tetti di spesa sono stati salvati');
+  };
+
+  const updateSavingsGoal = (newGoal: number) => {
+    setSavingsGoal(newGoal);
+    if (user?.id) {
+      try { localStorage.setItem(`onyx_savings_goal_${user.id}`, String(newGoal)); } catch {}
+    }
+    showToast('Obiettivo di risparmio aggiornato');
+  };
+
   // Reminder methods
   const toggleReminder = (id: string) => {
     setReminders(prev => {
@@ -488,11 +565,18 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         setSelectedShiftId,
         toggleClockIn,
         addShift,
+        updateShift,
+        bulkSetShifts,
+        deleteShift,
         habits,
         toggleHabit,
         addHabit,
         transactions,
         budgetCategories,
+        updateBudgetCategory,
+        updateAllBudgetCategories,
+        savingsGoal,
+        updateSavingsGoal,
         addTransaction,
         totalIncome,
         totalExpenses,
